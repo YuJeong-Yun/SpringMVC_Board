@@ -35,4 +35,20 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listAll();
 	}
 
+
+	@Override
+	public BoardVO readBoard(Integer bno) {
+		log.info(" readBoard(Integer bno) 호출 ");
+		
+		return dao.getBoard(bno);
+	}
+
+
+	@Override
+	public void updateBoard(BoardVO vo) {
+		log.info(" updateBoard(BoardVO vo) 호출");
+		
+		dao.updateBoard(vo);
+	}
+
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
@@ -47,7 +48,7 @@ public class BoardController {
 		log.info(" 글쓰기 완료! ");
 		// 정보를 전달
 		rttr.addFlashAttribute("result", "REGOK");
-		
+
 		// return "/board/success";
 		return "redirect:/board/listAll";
 	}
@@ -68,6 +69,53 @@ public class BoardController {
 		model.addAttribute("result", result);
 	}
 
-	
+	// http://localhost:8088/board/read?bno=1
+	// 글 본문보기
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public void readGET(@RequestParam("bno") int bno, Model model) {
+		log.info(" readGET() 호출");
 
+		log.info(" bno : " + bno);
+
+		// 글 번호를 가지고 서비스 - 글정보 가져오기 동작 호출
+		BoardVO vo = service.readBoard(bno);
+
+		// 가져온 데이터를 연결된 뷰페이지에 출력
+		model.addAttribute("vo", vo);
+
+	}
+
+	// http://localhost:8088/board/modify
+	// 글 수정하기
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void modifyGET(@RequestParam("bno") int bno, Model model) {
+		log.info(" modifyGET() 호출 ");
+
+		log.info(" 수정할 글 번호 : " + bno);
+
+		// bno에 해당하는 글정보를 가져와서 처리
+		model.addAttribute("uvo", service.readBoard(bno));
+
+	}
+
+	// 글 수정하기(수정할 정보를 전달받아서 DB에 수정)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyPOST(BoardVO vo, RedirectAttributes rttr) {
+		log.info(" modifyPOST() 호출 ");
+
+		// 전달된 데이터 저장 (수정 데이터)
+		// 확인
+//		log.info(vo + "");
+
+		// 전달받은 객체정보를 사용하여 데이터 수정
+		service.updateBoard(vo);
+		
+		// 처리 결과값을 전달
+		rttr.addFlashAttribute("result", "MODOK");
+
+		return "redirect:/board/listAll";
+	}
+
+	
+	
 }

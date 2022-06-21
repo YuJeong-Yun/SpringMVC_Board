@@ -11,4 +11,10 @@ public interface BoardDAO {
 	
 	// 글 리스트 (select - list)
 	public List<BoardVO> listAll();
+	
+	// 글정보 가져오기
+	public BoardVO getBoard(Integer bno);
+	
+	// 글 수정
+	public void updateBoard(BoardVO vo);
 }

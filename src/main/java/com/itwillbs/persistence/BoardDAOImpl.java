@@ -38,6 +38,19 @@ public class BoardDAOImpl implements BoardDAO {
 		// mapper 해당 sql 호출
 		return sqlSession.selectList(NAMESPACE+".listAll");
 	}
+
+	@Override
+	public BoardVO getBoard(Integer bno) {
+		log.info(" getBoard() 호출 ");
+		
+		return sqlSession.selectOne(NAMESPACE+".getBoard", bno);
+	}
+
+	@Override
+	public void updateBoard(BoardVO vo) {
+		
+		sqlSession.update(NAMESPACE+".updateBoard", vo);
+	}
 	
 
 }
