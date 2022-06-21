@@ -1,5 +1,7 @@
 package com.itwillbs.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,7 +20,7 @@ public class BoardDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String NAMESPACE = "com.itwllbs.mapper.BoardMapper";
+	private static final String NAMESPACE = "com.itwillbs.mapper.BoardMapper";
 	
 	@Override
 	public void create(BoardVO vo) {
@@ -28,5 +30,14 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		log.info("mapper에서 처리 후 이동 ");
 	}
+
+	@Override
+	public List<BoardVO> listAll() {
+		log.info(" listAll() 호출");
+		
+		// mapper 해당 sql 호출
+		return sqlSession.selectList(NAMESPACE+".listAll");
+	}
+	
 
 }

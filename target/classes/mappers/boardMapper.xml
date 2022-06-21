@@ -8,8 +8,12 @@
   
   	<insert id="createBoard">
   		insert into tbl_board (title, content, writer) 
-  		values (#{title}, #{content}, #{writer})
+  		values(#{title}, #{content}, #{writer})
   	</insert>
+  	
+  	<select id="listAll" resultType="BoardVO">
+  		select * from tbl_board
+  	</select>
   
   </mapper>
   
