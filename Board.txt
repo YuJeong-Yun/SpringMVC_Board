@@ -15,3 +15,17 @@ Board.txt
 	- 화면방식 결정
 	- 경로 설정(절대경로, 상대경로)
 	
+	
+
+	
+	
+	* 게시판 동작
+	동작				URI						방식		처리 후 페이지
+	글쓰기(정보입력)	/board/register			GET			글쓰기.jsp (view 연결)
+	글쓰기(처리)		/board/register			POST		리스트 페이지(컨트롤러)
+	글 리스트 보기		/board/list				GET			리스트.jsp (view 연결)
+	글 본문보기			/board/read?bno=xx		GET			본문.jsp (view 연결)		
+	글 수정하기			/board/modify/bno=x		GET			수정.jsp (view 연결)
+	글 수정하기(처리)	/board/modify			POST		리스트페이지/본문페이지(컨트롤러)
+	글 삭제하기			/board/remove			POST		리스트페이지(컨트롤러)
+	

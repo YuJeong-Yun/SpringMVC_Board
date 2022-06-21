@@ -8,7 +8,7 @@
   
   	<insert id="createBoard">
   		insert into tbl_board (title, content, writer) 
-  		values ()
+  		values (#{title}, #{content}, #{writer})
   	</insert>
   
   </mapper>
