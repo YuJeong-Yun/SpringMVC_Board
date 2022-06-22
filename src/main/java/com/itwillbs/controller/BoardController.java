@@ -1,7 +1,5 @@
 package com.itwillbs.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,7 +38,7 @@ public class BoardController {
 
 	// 글쓰기 - POST
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(BoardVO vo, RedirectAttributes rttr) {
+	public String registerPOST(BoardVO vo, RedirectAttributes rttr) throws Exception {
 		log.info(" registerPOST() 호출 ");
 		// 한글처리 (=> web.xml 필터로 처리)
 		// 전달된 정보 저장(글쓰기 정보)
@@ -59,7 +57,7 @@ public class BoardController {
 	// http://localhost:8088/board/listAll
 	// 글 리스트 - GET
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
-	public void listAllGET(Model model, @ModelAttribute("result") String result, HttpSession session) {
+	public void listAllGET(Model model, @ModelAttribute("result") String result, HttpSession session) throws Exception {
 		log.info(" listAllGET() 호출 ");
 
 		log.info("결과 : " + result);
@@ -74,10 +72,10 @@ public class BoardController {
 		model.addAttribute("result", result);
 	}
 
-	// http://localhost:8088/board/read?bno=1
+	// http://localhost:8088/board/read?bno=3
 	// 글 본문보기
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public void readGET(@RequestParam("bno") int bno, Model model, HttpSession session) {
+	public void readGET(@RequestParam("bno") int bno, Model model, HttpSession session) throws Exception {
 		log.info(" readGET() 호출");
 
 //		log.info(" bno : " + bno);
@@ -102,7 +100,7 @@ public class BoardController {
 	// http://localhost:8088/board/modify
 	// 글 수정하기
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void modifyGET(@RequestParam("bno") int bno, Model model) {
+	public void modifyGET(@RequestParam("bno") int bno, Model model) throws Exception {
 		log.info(" modifyGET() 호출 ");
 
 		log.info(" 수정할 글 번호 : " + bno);
@@ -114,7 +112,7 @@ public class BoardController {
 
 	// 글 수정하기(수정할 정보를 전달받아서 DB에 수정)
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyPOST(BoardVO vo, RedirectAttributes rttr) {
+	public String modifyPOST(BoardVO vo, RedirectAttributes rttr) throws Exception {
 		log.info(" modifyPOST() 호출 ");
 
 		// 전달된 데이터 저장 (수정 데이터)
@@ -130,9 +128,10 @@ public class BoardController {
 		return "redirect:/board/listAll";
 	}
 
+	// http://localhost:8088/board/remove
 	// 글 삭제
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String removePOST(@RequestParam("bno") int bno, RedirectAttributes rttr) {
+	public String removePOST(@RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception {
 		log.info(" removePOST() 호출 ");
 		// 전달된 정보 저장
 		log.info(bno + "");
