@@ -16,4 +16,7 @@ public interface BoardService {
 	
 	// 글 수정하기
 	public void updateBoard(BoardVO vo);
+	
+	// 글 삭제하기
+	public void deleteBoard(Integer bno);
 }

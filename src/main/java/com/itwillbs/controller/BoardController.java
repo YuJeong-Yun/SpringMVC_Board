@@ -109,13 +109,26 @@ public class BoardController {
 
 		// 전달받은 객체정보를 사용하여 데이터 수정
 		service.updateBoard(vo);
-		
+
 		// 처리 결과값을 전달
 		rttr.addFlashAttribute("result", "MODOK");
 
 		return "redirect:/board/listAll";
 	}
 
-	
-	
+	// 글 삭제
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	public String removePOST(@RequestParam("bno") int bno, RedirectAttributes rttr) {
+		log.info(" removePOST() 호출 ");
+		// 전달된 정보 저장
+		log.info(bno + "");
+
+		// bno를 사용하여 서비스-글삭제
+		service.deleteBoard(bno);
+		
+		// '글 삭제 완료' 메세지 출력 페이지 이동
+		rttr.addFlashAttribute("result", "DELOK");
+
+		return "redirect:/board/listAll";
+	}
 }

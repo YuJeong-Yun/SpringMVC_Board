@@ -17,4 +17,7 @@ public interface BoardDAO {
 	
 	// 글 수정
 	public void updateBoard(BoardVO vo);
+	
+	// 글 삭제
+	public void removeBoard(Integer bno);
 }

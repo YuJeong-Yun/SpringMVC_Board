@@ -27,6 +27,12 @@
   		where bno=#{bno} 
   	</update>
   	
+  	<delete id="deleteBoard">
+  		delete from tbl_board 
+  		where bno=#{bno}
+  	</delete>
+  	
+
   	
   </mapper>
   
