@@ -19,4 +19,7 @@ public interface BoardService {
 	
 	// 글 삭제하기
 	public void deleteBoard(Integer bno);
+	
+	// 글 조회수 증가
+	public void increaseViewCnt(Integer bno);
 }

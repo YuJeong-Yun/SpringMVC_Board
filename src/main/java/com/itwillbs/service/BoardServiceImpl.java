@@ -54,9 +54,18 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void deleteBoard(Integer bno) {
-		log.info(" deleteBoard(int bno) 호출");
+		log.info(" deleteBoard(Integer bno) 호출");
 		
 		dao.removeBoard(bno);
+	}
+
+
+	@Override
+	public void increaseViewCnt(Integer bno) {
+		log.info(" increaseViewCnt(Integer bno) 호출");
+		
+		dao.increaseViewCnt(bno);
+		
 	}
 
 }

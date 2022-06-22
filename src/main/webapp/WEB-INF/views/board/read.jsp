@@ -27,6 +27,11 @@
 							    name ="title" value="${vo.bno }" readonly="readonly">
 						</div>
 						<div class="form-group">
+							<label for="exampleInputEmail1">조회수</label>
+							<input type="text" class="form-control" id="exampleInputEmail1"
+							    name ="title" value="${vo.viewcnt }" readonly="readonly">
+						</div>
+						<div class="form-group">
 							<label for="exampleInputEmail1">글 제목</label>
 							<input type="text" class="form-control" id="exampleInputEmail1"
 							    name ="title" value="${vo.title }"  readonly="readonly">

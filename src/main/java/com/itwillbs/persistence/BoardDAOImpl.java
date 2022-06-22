@@ -55,6 +55,11 @@ public class BoardDAOImpl implements BoardDAO {
 	public void removeBoard(Integer bno) {
 		sqlSession.delete(NAMESPACE+".deleteBoard", bno);
 	}
+
+	@Override
+	public void increaseViewCnt(Integer bno) {
+		sqlSession.update(NAMESPACE+".increaseViewCnt", bno);
+	}
 	
 
 }

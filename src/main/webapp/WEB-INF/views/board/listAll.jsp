@@ -61,7 +61,7 @@
 
 	if (result == "DELOK") {
 		alert('글 삭제 완료!');
-
 	}
+
 </script>
 <%@ include file="../include/footer.jsp"%>

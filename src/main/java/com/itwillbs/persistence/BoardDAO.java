@@ -20,4 +20,7 @@ public interface BoardDAO {
 	
 	// 글 삭제
 	public void removeBoard(Integer bno);
+	
+	// 글 조회수 증가
+	public void increaseViewCnt(Integer bno);
 }
