@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.Criteria;
+import com.itwillbs.domain.PageMaker;
 import com.itwillbs.service.BoardService;
 
 @Controller
@@ -125,7 +127,7 @@ public class BoardController {
 		// 처리 결과값을 전달
 		rttr.addFlashAttribute("result", "MODOK");
 
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPM";
 	}
 
 	// http://localhost:8088/board/remove
@@ -142,6 +144,30 @@ public class BoardController {
 		// '글 삭제 완료' 메세지 출력 페이지 이동
 		rttr.addFlashAttribute("result", "DELOK");
 
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPM";
+	}
+	
+	
+	// http://localhost:8088/board/listPM
+	// http://localhost:8088/board/listPM?page=5
+	// 페이징처리 - 게시판 리스트
+	@RequestMapping(value="/listPM", method=RequestMethod.GET)
+	public void listCriGET(PageMaker pm, Model model, HttpSession session) throws Exception {
+		log.info(" listCriGET() - 페이징 처리 리스트 ");
+		
+//		// 페이징 처리 객체
+//		Criteria cri = new Criteria();
+//		cri.setPerPageNum(5);
+		
+		
+		// 서비스 - 페이징 처리된 리스트 동작 호출
+		// 해당 정보를 view 페이지로 전달
+		model.addAttribute("boardList", service.boardListCri(pm));
+		
+		// 하단 페이징처리 정보 전달
+		pm.setTotalCount(service.totalCnt());
+		model.addAttribute("pm", pm);
+		
+		session.setAttribute("upFlag", "1");
 	}
 }

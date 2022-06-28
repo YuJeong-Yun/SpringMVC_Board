@@ -75,7 +75,8 @@
 	$(document).ready(function() {
 		// 목록 버튼 클릭시
 		$('.bg-purple').click(function(){
-			location.href='/board/listAll';
+			var page = parseInt("${param.page}");
+			location.href='/board/listPM?page='+page;
 		});
 		
 		

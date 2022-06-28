@@ -3,6 +3,7 @@ package com.itwillbs.service;
 import java.util.List;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.PageMaker;
 
 public interface BoardService {
 	// 글쓰기
@@ -22,4 +23,10 @@ public interface BoardService {
 	
 	// 글 조회수 증가
 	public void increaseViewCnt(Integer bno);
+	
+	// 페이징 처리
+	public List<BoardVO> boardListCri(PageMaker pm);
+	
+	// 글 전체 개수 조회
+	public Integer totalCnt();
 }

@@ -39,12 +39,12 @@ public class CommonExceptionAdvice {
 	
 	
 	
-	@ExceptionHandler(NullPointerException.class)
-	public String nullEx() {
-		log.info(" nullEx() 호출 ");
-		
-		return "";
-	}
+//	@ExceptionHandler(NullPointerException.class)
+//	public String nullEx() {
+//		log.info(" nullEx() 호출 ");
+//		
+//		return "";
+//	}
 	
 	@ExceptionHandler(Exception.class)
 	public ModelAndView common(Exception e) {

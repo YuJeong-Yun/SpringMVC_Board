@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.PageMaker;
 import com.itwillbs.persistence.BoardDAO;
 
 @Service
@@ -65,7 +66,20 @@ public class BoardServiceImpl implements BoardService {
 		log.info(" increaseViewCnt(Integer bno) 호출");
 		
 		dao.increaseViewCnt(bno);
-		
 	}
+
+
+	@Override
+	public List<BoardVO> boardListCri(PageMaker pm) {
+		return dao.listPage(pm);
+	}
+
+
+	@Override
+	public Integer totalCnt() {
+		return dao.getTotalCnt();
+	}
+
+	
 
 }

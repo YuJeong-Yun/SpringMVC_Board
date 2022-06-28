@@ -3,6 +3,7 @@ package com.itwillbs.persistence;
 import java.util.List;
 
 import com.itwillbs.domain.BoardVO;
+import com.itwillbs.domain.PageMaker;
 
 public interface BoardDAO {
 
@@ -23,4 +24,12 @@ public interface BoardDAO {
 	
 	// 글 조회수 증가
 	public void increaseViewCnt(Integer bno);
+	
+	// 글 페이징처리
+	public List<BoardVO> listPage();
+	public List<BoardVO> listPage(int page, int size);
+	public List<BoardVO> listPage(PageMaker pm);
+	
+	// 글 전체 개수 조회
+	public Integer getTotalCnt();
 }

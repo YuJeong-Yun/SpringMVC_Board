@@ -38,5 +38,28 @@
   		where bno = #{bno}
   	</update>
   	
+  	<select id="listPageTest" resultType="BoardVO">
+  	  <![CDATA[
+  		select * from tbl_board 
+  		where bno > 0 
+  		order by bno desc, regdate desc 
+  		limit 0,10 
+  	  ]]>
+  	</select>
+  	
+  	<select id="listPage" resultType="BoardVO">
+  	  <![CDATA[
+  		select * from tbl_board 
+  		where bno > 0 
+  		order by bno desc, regdate desc 
+  		limit #{pageStart},#{perPageNum} 
+  	  ]]>
+  	</select>
+  	
+  	<select id="totalCnt" resultType="int">
+  		select count(bno) 
+  		from tbl_board 
+  	</select>
+  	
   </mapper>
   
