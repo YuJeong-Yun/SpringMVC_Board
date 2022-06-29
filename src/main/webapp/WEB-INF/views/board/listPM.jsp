@@ -5,11 +5,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<h1>listAll.jsp</h1>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#itwillCNT').click(function(){
+			$.ajax({
+				url : "/count",
+				type : "GET",
+				success: function(data){
+					alert('성공');
+					
+					$('#itwillTitle').append(" 글의 개수 : " + data + "개");
+				},
+				error: function(){
+					alert("에러발생");
+				}
+			});		
+		});
+	}); //jquery
+</script>
+
+
+<h1 id="itwillTitle">listPM.jsp</h1>
 
 <div class="box">
 	<div class="box-header with-border">
 		<h3 class="box-title">Bordered Table</h3>
+		<input type="button" value="저장된 글의 수 조회" id="itwillCNT" class="btn btn-black btn-info ">
 	</div>
 
 	<div class="box-body">

@@ -58,10 +58,10 @@ public class BoardDAOTest {
 		cri.setPage(3);
 		cri.setPerPageNum(5);
 		
-		List<BoardVO> boardList = dao.listPage(cri);
-		
-		for (BoardVO vo : boardList) {
-			System.out.println(vo.getBno()+" : "+vo.getTitle() );
-		}
+//		List<BoardVO> boardList = dao.listPage(cri);
+//		
+//		for (BoardVO vo : boardList) {
+//			System.out.println(vo.getBno()+" : "+vo.getTitle() );
+//		}
 	}
 }
